@@ -1,5 +1,5 @@
 # Puzzle-Challenge
-Is a flutter project for the flutter puzzle hack didn't create any new or different design, used the same assets from the example and same design concept. the design can be changed in the future if i found the time to do it. just trying to have fun doing something new. you will find some bugs i'm aware of it but too lazy to fix them, if you're interest go a head clone the project and fix them.
+Is a flutter project for the flutter puzzle hack didn't create any new or different design, used the same assets from the example and same design concept. the design can be changed in the future if i found the time to do it. just trying to have fun doing something new.
 
 
 ## Installation
@@ -29,7 +29,7 @@ if you don't have flutter follow steps [here](https://flutter.dev/docs/get-start
 </table>
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are welcome go ahead and enjoy.
 
 
 ## License
