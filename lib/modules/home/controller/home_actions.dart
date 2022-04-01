@@ -42,10 +42,13 @@ class HomeActions {
   }
 
   void move(int index) async {
-    _puzzleViewModel.swap(index);
-    _movesViewModel.plus();
-    _audioViewModel.moveSound();
-    _checkIfSolved();
+    if(_settingViewModel.isStarted) {
+      if(_puzzleViewModel.swap(index)) {
+        _movesViewModel.plus();
+        _audioViewModel.moveSound();
+        _checkIfSolved();
+      }
+    }
   }
 
   void _checkIfSolved(){

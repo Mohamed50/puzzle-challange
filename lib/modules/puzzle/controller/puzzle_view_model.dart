@@ -49,7 +49,7 @@ class PuzzleViewModel extends GetxController {
     update();
   }
 
-  swap(int index) {
+  bool swap(int index) {
     int to = emptyTileIndex;
     int from = index;
     int toPosition = _tiles[to].index;
@@ -61,7 +61,9 @@ class PuzzleViewModel extends GetxController {
       _tiles[from].index = toPosition;
       _tiles[to].index = fromPosition;
       update();
+      return true;
     }
+    return false;
   }
 
   bool checkIfSolved() {
