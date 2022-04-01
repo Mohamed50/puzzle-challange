@@ -6,11 +6,13 @@ import 'package:puzzle_hack/modules/puzzle/controller/puzzle_view_model.dart';
 import 'package:puzzle_hack/modules/puzzle_image/controller/puzzle_image_view_model.dart';
 import 'package:puzzle_hack/modules/score/controller/score_view_model.dart';
 import 'package:puzzle_hack/modules/score/data/score_service.dart';
+import 'package:puzzle_hack/modules/setting/controller/setting_view_model.dart';
 import 'package:puzzle_hack/modules/timer/controller/timer_view_model.dart';
 
 class AppBindings extends Bindings{
   @override
   void dependencies() {
+    Get.put(SettingViewModel());
     Get.put(PuzzleImageViewModel());
     Get.put(PuzzleViewModel(Constant.greenPath));
     Get.put(TimerViewModel());
