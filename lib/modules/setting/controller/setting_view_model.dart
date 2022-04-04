@@ -12,16 +12,16 @@ class SettingViewModel extends GetxController {
 
   int get countDown => _countDown.value;
 
-  startGame(VoidCallback onSecondPassed) {
+  startGame({required VoidCallback onSecondPassed, required VoidCallback onFinish}) {
     _isStarted.value = true;
-    _startCountDown(onSecondPassed);
+    _startCountDown(onSecondPassed, onFinish);
   }
 
   stopGame() {
     _isStarted.value = false;
   }
 
-  _startCountDown(VoidCallback onSecondPassed) {
+  _startCountDown(VoidCallback onSecondPassed, VoidCallback onFinish) {
     _countDown.value = 3;
     Timer.periodic(
       const Duration(seconds: 1),
@@ -30,6 +30,7 @@ class SettingViewModel extends GetxController {
         _countDown.value = countDown - 1;
         if(countDown == 0) {
           timer.cancel();
+          onFinish();
         }
       },
     );

@@ -33,17 +33,21 @@ class HomeActions {
   /// <<<------------------------------- actions methods
 
   void shuffle() async {
-    _settingViewModel.startGame((){
-      _puzzleViewModel.shuffle();
-      _audioViewModel.shuffleSound();
-    });
-    _movesViewModel.restart();
-    _timerViewModel.start();
+    _settingViewModel.startGame(
+      onSecondPassed: () {
+        _puzzleViewModel.shuffle();
+        _audioViewModel.shuffleSound();
+      },
+      onFinish: () {
+        _movesViewModel.restart();
+        _timerViewModel.start();
+      },
+    );
   }
 
   void move(int index) async {
-    if(_settingViewModel.isStarted) {
-      if(_puzzleViewModel.swap(index)) {
+    if (_settingViewModel.isStarted) {
+      if (_puzzleViewModel.swap(index)) {
         _movesViewModel.plus();
         _audioViewModel.moveSound();
         _checkIfSolved();
@@ -51,18 +55,18 @@ class HomeActions {
     }
   }
 
-  void _checkIfSolved(){
-    if(_puzzleViewModel.checkIfSolved()){
+  void _checkIfSolved() {
+    if (_puzzleViewModel.checkIfSolved()) {
       Get.snackbar('Congrats', 'You Win!!!');
       _audioViewModel.winSound();
-      _scoreViewModel.isHighScore(_timerViewModel.seconds, _movesViewModel.moves);
+      _scoreViewModel.isHighScore(
+          _timerViewModel.seconds, _movesViewModel.moves);
     }
   }
 
-  finishGame(){
+  finishGame() {
     _timerViewModel.cancel();
   }
-
 
   void onImageTap(int value) {
     _puzzleImageViewModel.selectImage(value);
@@ -70,7 +74,6 @@ class HomeActions {
     finishGame();
   }
 
-/// actions methods ------------------------------->>>
-
+  /// actions methods ------------------------------->>>
 
 }
